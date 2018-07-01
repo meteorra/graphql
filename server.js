@@ -4,7 +4,7 @@ const cors = require('cors');
 const express = require('express');
 const { makeExecutableSchema } = require('graphql-tools');
 
-const port = 9000;
+const port = process.env.PORT || 9000;
 
 const typeDefs = `
     type Query {
