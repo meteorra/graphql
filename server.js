@@ -8,13 +8,40 @@ const port = process.env.PORT || 9000;
 
 const typeDefs = `
     type Query {
-        greeting: String
+        product(id: ID!): Product 
+        products: [Product]
+    }
+    
+    type Product {
+        id: ID!
+        title: String
+        description: String
     }
 `;
 
+const products = [
+    {
+        id: '1',
+        title: 'Product 1',
+        description: 'Description of product 1'
+    },
+    {
+        id: '2',
+        title: 'Product 2',
+        description: 'Descrition of product 2'
+    }
+];
+
+const product = {
+    id: '2',
+    title: 'Product 2',
+    description: 'Descrition of product 2'
+};
+
 const resolvers = {
     Query: {
-        greeting: () => 'Hello test'
+        products: () => products,
+        product: (root, { id }) => product
     }
 };
 
